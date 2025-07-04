@@ -101,8 +101,11 @@ jobs:
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         git clone ${{ github.event.inputs.COMMON_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.COMMON_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-
-    - name: Set Swap Space
+   - name: Verify vendor/orangefox clone
+     run: |
+        test -f vendor/orangefox/config/common.mk && echo "Clone thành công" || (echo "Clone sai vị trí!" && exit 1
+  
+  - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
       with:
         swap-size-gb: 14

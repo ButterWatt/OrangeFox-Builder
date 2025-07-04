@@ -84,6 +84,7 @@ jobs:
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
     - name: Clone OrangeFox vendor
       run: |
+        cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         git clone https://gitlab.com/OrangeFox/vendor/recovery.git -b 12.1 vendor/orangefox
 
     - name: Clone device tree

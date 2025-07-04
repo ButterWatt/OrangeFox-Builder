@@ -10,7 +10,7 @@ on:
       MANIFEST_BRANCH:
         description: 'MANIFEST_BRANCH'
         required: true
-        default: '11.0'
+        default: '12.1'
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
@@ -85,8 +85,8 @@ jobs:
     - name: Clone OrangeFox vendor
       run: |
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
-        git clone https://gitlab.com/OrangeFox/vendor/recovery.git -b 12.1 vendor/orangefox
-
+        git clone https://gitlab.com/OrangeFox/vendor/recovery.git -b fox_12.1 vendor/orangefox
+      working-directory: ${{ steps.pwd.outputs.workspace-folder }}
     - name: Clone device tree
       run: |
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
